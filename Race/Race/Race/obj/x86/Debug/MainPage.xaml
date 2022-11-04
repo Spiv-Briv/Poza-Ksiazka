@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="Race.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Race"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1000"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:ConnectionId='2' x:Name="Start" Grid.Column="0" Width="100" Height="50" HorizontalAlignment="Center" Content="Ruch"                ></Button>
+        <StackPanel x:ConnectionId='3' x:Name="Pole" Grid.Row="0" Grid.Column="1" BorderThickness="1,0,1,0" BorderBrush="#FF00F7FD">
+
+        </StackPanel>
+        <StackPanel x:ConnectionId='4' Grid.Column="2" x:Name="Wyniki">
+
+        </StackPanel>
+    </Grid>
+
+
+
+</Page>
+
