@@ -1,0 +1,17 @@
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\bin\Debug\net6.0-windows\Objetosc.exe
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\bin\Debug\net6.0-windows\Objetosc.deps.json
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\bin\Debug\net6.0-windows\Objetosc.runtimeconfig.json
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\bin\Debug\net6.0-windows\Objetosc.dll
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\bin\Debug\net6.0-windows\Objetosc.pdb
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.csproj.AssemblyReference.cache
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.Form1.resources
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.csproj.GenerateResource.cache
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.AssemblyInfoInputs.cache
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.AssemblyInfo.cs
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.csproj.CoreCompileInputs.cache
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.dll
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\refint\Objetosc.dll
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.pdb
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\Objetosc.genruntimeconfig.cache
+C:\Users\Xopero\Desktop\cope\Poza-Ksiazka\Objetosc\Objetosc\Objetosc\obj\Debug\net6.0-windows\ref\Objetosc.dll
