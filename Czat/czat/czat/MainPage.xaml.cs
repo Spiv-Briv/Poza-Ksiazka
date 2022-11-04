@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +23,30 @@ namespace czat
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         public MainPage()
         {
             this.InitializeComponent();
+        }
+        private void Send(object sender, RoutedEventArgs e)
+        {
+            Button user = (Button)sender;
+            TextBox message = new TextBox();
+            if (user.Name == "Sender")
+            {
+                message.Text = send_content.Text;
+                message.Style = (Style)Resources["you"];
+                send_content.Text = "";
+            }
+            else
+            {
+                message.Text = rec_mess.Text;
+                message.Style = (Style)Resources["other"];
+                rec_mess.Text = "";
+            }
+
+            Container.Children.Add(message);
+
         }
     }
 }
