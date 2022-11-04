@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="Statki.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Statki"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:ConnectionId='2' x:Name="Menu" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" Spacing="30">
+            <Slider x:ConnectionId='5' Width="100" x:Name="Rozmiar" Header="Rozmiar" Maximum="4" Minimum="1" Value="4" IsEnabled="False"                       ></Slider>
+            <Slider x:ConnectionId='6' Width="100" Header="Poziomo" x:Name="X" Minimum="1" Maximum="10"                       ></Slider>
+            <Slider x:ConnectionId='7' Width="100" Header="Pionowo" x:Name="Y" Minimum="1" Maximum="10"                       ></Slider>
+            <RadioButton x:ConnectionId='8' GroupName="Orientacja" x:Name="Poz" Content="Poziomo"                 ></RadioButton>
+            <RadioButton x:ConnectionId='9' GroupName="Orientacja" x:Name="Pio" Content="Pionowo" IsChecked="True"                 ></RadioButton>
+
+            <Button x:ConnectionId='10' Content="Dodaj Statek" x:Name="dodaj"              />
+            <TextBlock x:ConnectionId='11' x:Name="Output" Width="150"></TextBlock>
+        </StackPanel>
+
+        <Grid x:ConnectionId='3' x:Name="lewy" Background="gray" Grid.Row="1" Grid.Column="1"></Grid>
+        <Grid x:ConnectionId='4' x:Name="prawy" Background="gray" Grid.Row="1" Grid.Column="3"></Grid>
+    </Grid>
+</Page>
+
