@@ -26,7 +26,7 @@ namespace TablicaMendelejewa
         Atom[] at =
         {
             new Atom("H","Wodór",1,0,1,1.008,0.082,1,1),
-            new Atom("He","Hel",2,2,4.003,0.1785,1,18),
+            new Atom("He","Hel",2,2,4.003,0.179,1,18),
             new Atom("Li","Lit",3,4,6.94,535,2,1),
             new Atom("Be","Beryl",4,5,9.012,1848,2,2),
             new Atom("B","Bor",5,6,10.81,2340,2,13),
@@ -144,13 +144,57 @@ namespace TablicaMendelejewa
             new Atom("Ts","Tenes",117,177,294,7,17),
             new Atom("Og","Oganeson",118,176,294,7,18)
         };
+        private int[] help = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         public MainPage()
         {
             this.InitializeComponent();
-            //this.Highlight.Children.Add((UIElement)at[0].Display(1));
-            for (int i = 0; i < at.Length; i++)
+            this.Display.Children.Add((UIElement)at[0].Display(6));
+            /*for (int i = 0; i < at.Length; i++)
             {
-                this.Tabela.Children.Add((UIElement)at[i].Display(0));
+                this.Tabela.Children.Add((UIElement)at[i].Display(2));
+                this.Tabela.Children[i].PointerPressed += Highlight;
+            }*/
+            this.Tabela.Children.Add((Grid)at[0].Information());
+        }
+
+        private void Highlight(object sender, PointerRoutedEventArgs e)
+        {
+            Grid siatka = (Grid)sender;
+            int j = this.Tabela.Children.IndexOf(siatka);
+            this.Display.Children.Clear();
+            this.Display.Children.Add(at[j].Display(6,false));
+        }
+        private void Highlight_Search(object sender, PointerRoutedEventArgs e)
+        {
+            Grid siatka = (Grid)sender;
+            int j = this.Search.Children.IndexOf(siatka);
+            this.Display.Children.Clear();
+            this.Display.Children.Add(at[this.help[j-1]].Display(6, false));
+        }
+
+        private void Szukanie(object sender, TextChangedEventArgs e)
+        {
+            for(int i = this.Search.Children.Count() - 1; i > 0; i--)
+            {
+                this.Search.Children.RemoveAt(i);
+            }
+            
+            TextBox capture = (TextBox)sender;
+            string Fraza = capture.Text;
+            for(int i = 0; i < this.at.Length; i++)
+            {
+                int index = 1;
+                if (at[i].Contains(Fraza)&&Fraza!="")
+                {
+                    this.help[index - 1] = i;
+                    this.Search.Children.Add(at[i].Display(3,false));
+                    this.Search.Children[index].PointerPressed += Highlight_Search;
+                    index++;
+                }
+                if (index == 8)
+                {
+                    break;
+                }
             }
         }
     }

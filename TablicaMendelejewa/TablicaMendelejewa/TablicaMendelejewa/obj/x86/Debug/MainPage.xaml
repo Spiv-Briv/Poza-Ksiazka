@@ -10,12 +10,20 @@
 
     <Grid x:ConnectionId='2' x:Name="Strona" >
         <Grid.RowDefinitions>
-            <!--<RowDefinition Height="200"/>-->
+            <RowDefinition Height="175"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <RelativePanel x:ConnectionId='3' HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" x:Name="Tabela">
-
-        </RelativePanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:ConnectionId='3' x:Name="Search" Grid.RowSpan="2" Spacing="3">
+            <TextBox x:ConnectionId='6' x:Name="Finder" PlaceholderText="Znajdź pierwiastek"                       />
+        </StackPanel>
+        <Grid x:ConnectionId='4' Grid.Row="0" Grid.Column="2" x:Name="Display"/>
+        <RelativePanel x:ConnectionId='5' HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" x:Name="Tabela"/>
         <!--<Grid x:Name="Highlight"></Grid>-->
     </Grid>
 </Page>
