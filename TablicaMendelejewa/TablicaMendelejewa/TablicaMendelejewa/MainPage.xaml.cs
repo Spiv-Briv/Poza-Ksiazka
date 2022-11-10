@@ -144,7 +144,7 @@ namespace TablicaMendelejewa
             new Atom("Ts","Tenes",117,177,294,7,17,2,8,18,32,32,18,7),
             new Atom("Og","Oganeson",118,176,294,7,18,2,8,18,32,32,18,8)
         };
-        private int[] help = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        private int[] help = { 0, 0, 0, 0, 0, 0, 0, 0, 0};
         public MainPage()
         {
             this.InitializeComponent();
@@ -179,10 +179,12 @@ namespace TablicaMendelejewa
         }
         private void Highlight_Search(object sender, PointerRoutedEventArgs e)
         {
-            Grid siatka = (Grid)sender;
-            int j = this.Search.Children.IndexOf(siatka);
-            this.Display.Children.Clear();
-            this.Display.Children.Add(at[this.help[j-1]].Display(6, false));
+            this.Tabela.Children.Clear();
+            Grid send = (Grid)sender;
+            Grid grid = at[help[this.Tabela.Children.IndexOf(send)]].Information();
+            grid.PointerPressed += Highlight;
+            this.Tabela.Children.Add(grid);
+            
         }
 
         private void Szukanie(object sender, TextChangedEventArgs e)
@@ -199,9 +201,10 @@ namespace TablicaMendelejewa
                 int index = 1;
                 if (at[i].Contains(Fraza)&&Fraza!="")
                 {
-                    this.help[index - 1] = i;
-                    this.Search.Children.Add(at[i].Display(3,false));
-                    this.Search.Children[index].PointerPressed += Highlight_Search;
+                    Grid grid = at[i].Display(3, false);
+                    this.help[index] = i;
+                    grid.PointerPressed += Highlight_Search;
+                    this.Search.Children.Add(grid);
                     index++;
                 }
                 if (index == 8)

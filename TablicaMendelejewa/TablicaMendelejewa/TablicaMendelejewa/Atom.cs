@@ -63,6 +63,10 @@ namespace TablicaMendelejewa
             Grupa = grupa;
             Powloki = new int[] { pow1, pow2, pow3, pow4, pow5, pow6, pow7 };
         }
+        public string GetNazwa()
+        {
+            return this.Nazwa;
+        }
         public Grid Display(int size)
         {
             int Scale = 4;
@@ -519,6 +523,7 @@ namespace TablicaMendelejewa
             Siatka.Children.Add(atNum);
             Siatka.Children.Add(MassNum);
             Siatka.Children.Add(Dens);
+            Siatka.Name = this.Nazwa;
 
             if (Okres <= 7 && margin)
             {
