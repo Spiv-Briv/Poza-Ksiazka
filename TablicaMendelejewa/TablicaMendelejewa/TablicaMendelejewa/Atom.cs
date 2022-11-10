@@ -24,7 +24,8 @@ namespace TablicaMendelejewa
         private double Masa { get; }
         private int Okres { get; }
         private int Grupa { get; }
-        public Atom(string symbol, string nazwa, int proton, int neutron, int elektron, double masa, double? gestosc, int okres, int grupa)
+        private int[] Powloki { get; }
+        /*public Atom(string symbol, string nazwa, int proton, int neutron, int elektron, double masa, double? gestosc, int okres, int grupa, int pow1, int pow2, int pow3, int pow4, int pow5, int pow6, int pow7)
         {
             Symbol = symbol;
             Nazwa = nazwa;
@@ -35,8 +36,8 @@ namespace TablicaMendelejewa
             Masa = masa;
             Okres = okres;
             Grupa = grupa;
-        }
-        public Atom(string symbol, string nazwa, int proton, int neutron, double masa, double? gestosc, int okres, int grupa)
+        }*/
+        public Atom(string symbol, string nazwa, int proton, int neutron, double masa, double? gestosc, int okres, int grupa, int pow1, int pow2, int pow3, int pow4, int pow5, int pow6, int pow7)
         {
             Symbol = symbol;
             Nazwa = nazwa;
@@ -47,8 +48,9 @@ namespace TablicaMendelejewa
             Masa = masa;
             Okres = okres;
             Grupa = grupa;
+            Powloki = new int[] { pow1, pow2, pow3, pow4, pow5, pow6, pow7};
         }
-        public Atom(string symbol, string nazwa, int proton, int neutron, double masa, int okres, int grupa)
+        public Atom(string symbol, string nazwa, int proton, int neutron, double masa, int okres, int grupa, int pow1, int pow2, int pow3, int pow4, int pow5, int pow6, int pow7)
         {
             Symbol = symbol;
             Nazwa = nazwa;
@@ -59,6 +61,7 @@ namespace TablicaMendelejewa
             Masa = masa;
             Okres = okres;
             Grupa = grupa;
+            Powloki = new int[] { pow1, pow2, pow3, pow4, pow5, pow6, pow7 };
         }
         public Grid Display(int size)
         {
@@ -525,7 +528,8 @@ namespace TablicaMendelejewa
             {
                 Siatka.Margin = new Thickness(0);
             }
-            
+
+            Siatka.VerticalAlignment = VerticalAlignment.Bottom;
             Siatka.PointerEntered += MouseHoverOn;
             Siatka.PointerExited += MouseHoverOff;
             return Siatka;
@@ -559,46 +563,94 @@ namespace TablicaMendelejewa
             TextBlock Nazwa = new TextBlock();
             TextBlock atNum = new TextBlock();
             TextBlock MassNum = new TextBlock();
-            TextBlock AtCont = new TextBlock();
+            TextBlock Prot = new TextBlock();
+            TextBlock Neut = new TextBlock();
+            TextBlock Elek = new TextBlock();
             TextBlock Dens = new TextBlock();
+            TextBlock Powloki = new TextBlock();
 
-            Symbol.Text = this.Symbol;
-            Nazwa.Text = "Pierwiastek: " + this.Nazwa;
-            atNum.Text = this.Proton.ToString();
-            MassNum.Text = this.Masa.ToString();
-            AtCont.Text = "p: " + this.Proton + "\nn: " + this.Neutron + "\ne: " + this.Elektron;
+            Symbol.Text = "Symbol: " + this.Symbol;
+            Nazwa.Text = this.Nazwa;
+            atNum.Text = "Liczba atomowa: " + this.Proton.ToString();
+            MassNum.Text = "Masa atomowa (u): " + this.Masa.ToString();
+            Prot.Text = "Protony: " + this.Proton;
+            Neut.Text = "Neutrony: " + this.Neutron;
+            Elek.Text = "Elektrony: " + this.Elektron;
             if (this.Gestosc == null)
             {
-                Dens.Text = "";
+                Dens.Text = "Gęstość nieznana";
             }
             else
             {
-                Dens.Text = this.Gestosc + "kg/m3";
+                Dens.Text = "Gęstość: " + this.Gestosc + "kg/m3 (" + Math.Round((double)this.Gestosc/997,4) + " gęstości wody)";
 
             }
+            Powloki.Text = "Położenie elektronów na powłokach elektronowych: " + this.Powloki[0].ToString();
+            for(int i = 1; i < this.Powloki.Length; i++)
+            {
+                if (this.Powloki[i] != 0)
+                {
+                    Powloki.Text += ", " + this.Powloki[i];
+                }
+            }
 
+            Siatka.Width = 800;
+            Siatka.Height = 600;
             Siatka.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 170, 170));
-            Siatka.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 255));
-            Siatka.Padding = new Thickness(7);
-            Siatka.CornerRadius = new CornerRadius(15);
-            Siatka.BorderThickness = new Thickness(0, 0, 4, 7);
+            Siatka.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 235, 235));
+            Siatka.Padding = new Thickness(15);
+            Siatka.CornerRadius = new CornerRadius(25);
+            Siatka.BorderThickness = new Thickness(0, 0, 7, 15);
             Siatka.Margin = new Thickness(25);
 
-            Symbol.Foreground = Nazwa.Foreground = atNum.Foreground = MassNum.Foreground = AtCont.Foreground = Dens.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 0, 0));
-            Symbol.FontFamily = Nazwa.FontFamily = atNum.FontFamily = MassNum.FontFamily = AtCont.FontFamily = Dens.FontFamily = new FontFamily("Calibri");
+            Symbol.Foreground = Nazwa.Foreground = atNum.Foreground = MassNum.Foreground = Prot.Foreground = Neut.Foreground = Elek.Foreground = Dens.Foreground = Powloki.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 0, 0));
+            Symbol.FontFamily = Nazwa.FontFamily = atNum.FontFamily = MassNum.FontFamily = Prot.FontFamily = Neut.FontFamily = Elek.FontFamily = Dens.FontFamily = Powloki.FontFamily = new FontFamily("Calibri");
 
-            Nazwa.Margin = new Thickness(0, 0, 400, 300);
-            Nazwa.FontSize = 36;
+            Nazwa.Margin = new Thickness(0, 0, 0, 0);
+            Nazwa.FontSize = 48;
+            Nazwa.FontWeight = FontWeights.Bold;
+            Nazwa.HorizontalAlignment = HorizontalAlignment.Center;
 
             Symbol.FontSize = 36;
-            Symbol.Margin = new Thickness(0, 0, 400, 200);
+            Symbol.Margin = new Thickness(0, 50, 0, 0);
+
+            atNum.FontSize = 32;
+            atNum.Margin = new Thickness(0,100,0,0);
+
+            MassNum.HorizontalAlignment = HorizontalAlignment.Right;
+            MassNum.FontSize = 28;
+            MassNum.Margin = new Thickness(0, 100, 0, 0);
+
+            Dens.FontSize = 28;
+            Dens.Margin = new Thickness(0, 150, 0, 0);
+
+            Powloki.FontSize = Prot.FontSize = Neut.FontSize = Elek.FontSize = 24;
+            Prot.Margin = new Thickness(0, 200, 0, 0);
+            Neut.Margin = new Thickness(200, 200, 0, 0);
+            Elek.Margin = new Thickness(425, 200, 0, 0);
+            Powloki.Margin = new Thickness(0, 250, 0, 0);
+            
+            StackPanel stak = new StackPanel();
+            stak.Orientation = Orientation.Horizontal;
+            stak.VerticalAlignment = VerticalAlignment.Bottom;
+            stak.HorizontalAlignment = HorizontalAlignment.Right;
+            stak.Spacing = 5;
+            for(int i = 0; i <= 7; i++)
+            {
+                stak.Children.Add(Display(i,false));
+            }
 
             Siatka.Children.Add(Nazwa);
             Siatka.Children.Add(Symbol);
-            Siatka.Children.Add(AtCont);
+            Siatka.Children.Add(Prot);
+            Siatka.Children.Add(Neut);
+            Siatka.Children.Add(Elek);
             Siatka.Children.Add(atNum);
             Siatka.Children.Add(MassNum);
             Siatka.Children.Add(Dens);
+            Siatka.Children.Add(Powloki);
+            Siatka.Children.Add(stak);
+            
 
             return Siatka;
         }
